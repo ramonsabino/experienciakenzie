@@ -1,0 +1,141 @@
+/************************************************************************************
+ *                                    PASSO 1                                       *
+ ************************************************************************************/
+const EXPLORADOR = 'Ramon'
+let bolsaDeItens = []
+let moedas = 0
+let energia = 5
+let recompensas = ['Chave', 'Duck, o Pato de Borracha', 'Moeda', 'Moeda', 'Moeda', 'Moeda', 'Moeda']
+
+
+
+
+
+
+/************************************************************************************
+ *                                    PASSO 2                                       *
+ ************************************************************************************/
+function taverna(){
+console.log('O Explorador ' + EXPLORADOR + ' acaba de entrar na taverna! ');
+ let i = 0
+  while (i < 5){
+  console.log('O Explorador ' + EXPLORADOR + ' está descansando! ');
+  energia = energia + 1
+   i++
+}
+console.log ('O Explorador ' + EXPLORADOR + ' está revitalizado! ');
+}
+
+
+
+
+
+
+/************************************************************************************
+ *                                    PASSO 3                                       *
+ ************************************************************************************/
+function pegarItens (item){
+if (pegarItens === 'Moeda'){
+  console.log ('O' + EXPLORADOR + 'Ganhou uma moeda!');
+  moeda += 1
+} else  {
+  console.log ('O' + EXPLORADOR + 'Acaba de ganhar um item');
+  bolsaDeItens.push(item);
+}
+}
+
+
+
+
+
+/************************************************************************************
+ *                                    PASSO 4                                       *
+ ************************************************************************************/
+function batalha (){
+    console.log ('O ' + EXPLORADOR + ' encontrou um monstro');
+if (energia < 1){
+  console.log ('O ' + EXPLORADOR + ' fugiu para taverna!')
+  return false
+} else {
+  console.log ('O ' + EXPLORADOR + ' derrotou o monstro!')
+  energia -= 1
+  return true
+} if (energia === 0){
+  console.log('O ' + EXPLORADOR + ' Fugiu para a taverna');
+  return false
+  }
+  }
+    energia = 4
+    batalha ()
+function explorar(){
+  console.log ('O' + EXPLORADOR + ' Saiu para explorar');
+  if (energia < 1){
+    console.log ('O' + EXPLORADOR + ' Não pode explorar!')
+    taverna ();
+    return false;
+} 
+}
+  if (batalha() === true){
+    roletarRecompenas();
+    return true;
+  } else {
+    taverna()
+    return false;
+  }
+
+
+  
+
+
+
+
+
+
+
+
+/************************************************************************************
+ *                                    PASSO 5                                       *
+ ************************************************************************************/
+function abriBau(){
+      if (bolsaDeItens === 'Chave'){
+      console.log('Parabéns, você finalmente abriu o baú, é perigoso lá fora, leve seu certificado!')
+      return rue
+    } else {
+      return false
+    }
+  }
+
+
+
+
+
+
+ 
+/************************************************************************************
+ *                        NÃO APAGUE OU MEXA NO CÓDIGO ABAIXO                       *
+ ************************************************************************************/
+let properties = {}
+let actions = {}
+
+const roletarRecompensas = function() {
+  let random = Math.floor(Math.floor(Math.random() * recompensas.length));
+  let loot  = recompensas[random];
+
+  pegarItem(loot);
+  recompensas.slice(random, 1);
+}
+
+if (typeof EXPLORADOR !== 'undefined')          {properties.EXPLORADOR = EXPLORADOR}
+if (typeof bolsaDeItens !== 'undefined')        {properties.bolsaDeItens = bolsaDeItens}
+if (typeof moedas !== 'undefined')              {properties.moedas = moedas}
+if (typeof energia !== 'undefined')             {properties.energia = energia}
+if (typeof recompensas !== 'undefined')         {properties.recompensas = recompensas}
+if (typeof taverna !== 'undefined')             {actions.taverna = taverna}
+if (typeof roletarRecompensas !== 'undefined')  {actions.roletarRecompensas = roletarRecompensas}
+if (typeof pegarItem !== 'undefined')           {actions.pegarItem = pegarItem}
+if (typeof batalha !== 'undefined')             {actions.batalha = batalha}
+if (typeof explorar !== 'undefined')            {actions.explorar = explorar}
+if (typeof abrirBau !== 'undefined')            {actions.abrirBau = abrirBau}
+
+module.exports.properties = properties;
+module.exports.actions = actions
